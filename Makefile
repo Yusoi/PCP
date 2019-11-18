@@ -1,11 +1,10 @@
 .DEFAULT_GOAL = all
 
-clean:
-	@rm tp1.o
+clean: 
+	-rm *.o
+	-rm error.txt
 
 all:
-	@gcc-9 -O2 -o tp1.o tp1.c
+	gcc -L$(PAPI_DIR)/lib -I$(PAPI_DIR)/include -fopenmp -O2 -o tp1.o tp1.c -lpapi
 
-run: clean all
-	@./tp1.o
 
