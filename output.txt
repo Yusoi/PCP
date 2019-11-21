@@ -1,2 +1,0 @@
-clean
-gcc -fopenmp -lpapi -O2 -o tp1.o tp1.c

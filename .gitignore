@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Error files and stray output files
+output.txt
+error.txt
+result.txt

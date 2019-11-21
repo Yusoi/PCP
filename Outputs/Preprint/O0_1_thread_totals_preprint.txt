@@ -1,0 +1,103 @@
+rm *.o
+rm error.txt
+gcc -L/share/apps/papi/5.4.1/lib -I/share/apps/papi/5.4.1/include -fopenmp -O0 -o tp1.o tp1.c -lpapi
+Run 1 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777619
+Total Clock Cycles: 31910656653
+Total Flops: 77
+Time running: 11.429129
+Run 2 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777612
+Total Clock Cycles: 31895758942
+Total Flops: 58
+Time running: 11.423682
+Run 3 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777610
+Total Clock Cycles: 31889039149
+Total Flops: 57
+Time running: 11.420771
+Run 4 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777616
+Total Clock Cycles: 31908895576
+Total Flops: 67
+Time running: 11.427867
+Run 5 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777608
+Total Clock Cycles: 31886743196
+Total Flops: 72
+Time running: 11.420107
+Run 6 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777610
+Total Clock Cycles: 31884571017
+Total Flops: 59
+Time running: 11.418624
+Run 7 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777620
+Total Clock Cycles: 31904159713
+Total Flops: 52
+Time running: 11.426287
+Run 8 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777607
+Total Clock Cycles: 31885810675
+Total Flops: 49
+Time running: 11.419290
+Run 9 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777606
+Total Clock Cycles: 31884932225
+Total Flops: 59
+Time running: 11.419647
+Run 10 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777608
+Total Clock Cycles: 31890728776
+Total Flops: 48
+Time running: 11.421097
+Run 11 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777608
+Total Clock Cycles: 31886853663
+Total Flops: 48
+Time running: 11.419705
+Run 12 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777609
+Total Clock Cycles: 31888626947
+Total Flops: 50
+Time running: 11.420355
+Run 13 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777616
+Total Clock Cycles: 31899263246
+Total Flops: 54
+Time running: 11.424151
+Run 14 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777620
+Total Clock Cycles: 31908964509
+Total Flops: 48
+Time running: 11.428153
+Run 15 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777612
+Total Clock Cycles: 31898228837
+Total Flops: 48
+Time running: 11.423563
+Run 16 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777615
+Total Clock Cycles: 31903195233
+Total Flops: 44
+Time running: 11.426299
+Run 17 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777609
+Total Clock Cycles: 31889143472
+Total Flops: 59
+Time running: 11.420975
+Run 18 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777613
+Total Clock Cycles: 31901165257
+Total Flops: 43
+Time running: 11.425491
+Run 19 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777614
+Total Clock Cycles: 31901495012
+Total Flops: 47
+Time running: 11.425712
+Run 20 -----------------------------------------------------------------------------------------------
+Total Instructions: 98003777610
+Total Clock Cycles: 31880292957
+Total Flops: 48
+Time running: 11.418017
