@@ -12,7 +12,7 @@
 #elif defined MEDIUM_HEAP
 #define M_SIZE 5000
 #elif defined SMALL_HEAP
-#define M_SIZE 2000
+#define M_SIZE 1023
 #else
 #define M_SIZE 1023
 #endif
