@@ -12,7 +12,7 @@ SWITCH=-DM_SWITCH
 SMALL_HEAP=-DSMALL_HEAP
 ##############################################################################
 
-FLAGS = $(SWITCH) -L$(PAPI_DIR)/lib -I$(PAPI_DIR)/include -fopenmp -O3 -lpapi -o tp1.o 
+FLAGS = $(SWITCH) $(BIG_HEAP) $(MEDIUM_HEAP) $(SMALL_HEAP) -L$(PAPI_DIR)/lib -I$(PAPI_DIR)/include -fopenmp -O3 -lpapi -o tp1.o 
 
 clean: 
 	-rm *.o
