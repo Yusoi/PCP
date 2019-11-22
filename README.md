@@ -1,5 +1,5 @@
 # PCP 
-## [TP1 (Shared Memory Optimization)] TP1/
+## [TP1 (Shared Memory Optimization)](TP1/)
 ## Problem: Running a simulation of heat dispersion in a matrix
 ### Optimizations:
 #### Optimization flag
