@@ -1,6 +1,9 @@
 # PCP 
 ## [TP1 (Shared Memory Optimization)](TP1/)
 ## Problem: Running a simulation of heat dispersion in a matrix
+
+***ALL OUTPUTS ARE SAVED IN [TP1/Outputs](TP1/Outputs) AS output.txt***
+
 ### Optimizations:
 #### Optimization flag
 To test, manually change the optimization flag in the compiler.
