@@ -5,7 +5,7 @@
 #include "papi.h"
 
 #define N_MAX 1000
-#define N_THREADS 1
+#define N_THREADS 24
 
 #ifdef BIG_HEAP
 #define M_SIZE 10000
@@ -31,9 +31,21 @@ int main()
 #if defined(BIG_HEAP) || defined(MEDIUM_HEAP) || defined(SMALL_HEAP)
 
     int **G1, **G2;
-
-    G1 = (int **)_mm_malloc(sizeof(int) * M_SIZE * M_SIZE, 64);
-    G2 = (int **)_mm_malloc(sizeof(int) * M_SIZE * M_SIZE, 64);
+    #ifdef BLOCK_SIZE
+    G1 = (int **)_mm_malloc(sizeof(int*) * M_SIZE, BLOCK_SIZE);
+    G2 = (int **)_mm_malloc(sizeof(int*) * M_SIZE, BLOCK_SIZE);
+    for(int i=0;i<M_SIZE;i++){
+	G1[i] = (int*)_mm_malloc(sizeof(int)*M_SIZE, BLOCK_SIZE);
+	G2[i] = (int*)_mm_malloc(sizeof(int)*M_SIZE, BLOCK_SIZE);
+    }
+    #else
+    G1 = (int**)malloc(sizeof(int*)*M_SIZE);
+    G2 = (int**)malloc(sizeof(int*)*M_SIZE);
+    for(int i=0;i<M_SIZE;i++){
+	G1[i] = (int*)malloc(sizeof(int)*M_SIZE);
+	G2[i] = (int*)malloc(sizeof(int)*M_SIZE);
+    }
+    #endif
 
     for (int i = 0; i < M_SIZE; i++)
     {
@@ -83,8 +95,8 @@ int main()
     for (it = 0; it < N_MAX; it++)
     {
 
-        //#pragma omp parallel num_threads(N_THREADS)
-        //#pragma omp for schedule(static)
+        #pragma omp parallel num_threads(N_THREADS)
+        #pragma omp for schedule(static)
         for (int i = 1; i < M_SIZE - 1; i++)
         {
             for (int j = 1; j < M_SIZE - 1; j++)
@@ -118,7 +130,7 @@ int main()
 
 #ifndef M_SWITCH
         //Copiar G2 para G1
-        //#pragma omp for schedule(static)
+        #pragma omp for schedule(static)
         for (int i = 1; i < M_SIZE - 1; i++)
         {
             for (int j = 1; j < M_SIZE - 1; j++)

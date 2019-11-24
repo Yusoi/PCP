@@ -1,0 +1,246 @@
+rm *.o
+rm error.txt
+gcc -DTOTALS    -DSMALL_HEAP -DBLOCKSIZE=64 -L/share/apps/papi/5.4.1/lib -I/share/apps/papi/5.4.1/include -fopenmp -Ofast -lpapi  -o tp1_t.o tp1.c
+gcc -DCACHE    -DSMALL_HEAP -DBLOCKSIZE=64 -L/share/apps/papi/5.4.1/lib -I/share/apps/papi/5.4.1/include -fopenmp -Ofast -lpapi  -o tp1_c.o tp1.c 
+Totals:
+Run 1 -----------------------------------------------------------------------------------------------
+Total Instructions: 2916022670
+Total Clock Cycles: 2561336082
+Total Flops: 6441
+Time running: 1.029030
+Run 2 -----------------------------------------------------------------------------------------------
+Total Instructions: 2918713033
+Total Clock Cycles: 2558732454
+Total Flops: 6524
+Time running: 1.027537
+Run 3 -----------------------------------------------------------------------------------------------
+Total Instructions: 2942442001
+Total Clock Cycles: 2568127288
+Total Flops: 6687
+Time running: 1.031572
+Run 4 -----------------------------------------------------------------------------------------------
+Total Instructions: 2920132722
+Total Clock Cycles: 2514283682
+Total Flops: 6531
+Time running: 1.011625
+Run 5 -----------------------------------------------------------------------------------------------
+Total Instructions: 2937463016
+Total Clock Cycles: 2568734141
+Total Flops: 6662
+Time running: 1.031395
+Run 6 -----------------------------------------------------------------------------------------------
+Total Instructions: 2919246526
+Total Clock Cycles: 2469029682
+Total Flops: 6536
+Time running: 0.991815
+Run 7 -----------------------------------------------------------------------------------------------
+Total Instructions: 2929026133
+Total Clock Cycles: 2569034765
+Total Flops: 6741
+Time running: 1.032034
+Run 8 -----------------------------------------------------------------------------------------------
+Total Instructions: 2943360420
+Total Clock Cycles: 2585363805
+Total Flops: 6774
+Time running: 1.038484
+Run 9 -----------------------------------------------------------------------------------------------
+Total Instructions: 2920380536
+Total Clock Cycles: 2588933844
+Total Flops: 6443
+Time running: 1.041376
+Run 10 -----------------------------------------------------------------------------------------------
+Total Instructions: 2938398358
+Total Clock Cycles: 2583388207
+Total Flops: 6766
+Time running: 1.037546
+Run 11 -----------------------------------------------------------------------------------------------
+Total Instructions: 2922104095
+Total Clock Cycles: 2556540843
+Total Flops: 6381
+Time running: 1.026563
+Run 12 -----------------------------------------------------------------------------------------------
+Total Instructions: 2933347668
+Total Clock Cycles: 2569975881
+Total Flops: 6483
+Time running: 1.032232
+Run 13 -----------------------------------------------------------------------------------------------
+Total Instructions: 2917643817
+Total Clock Cycles: 2573016158
+Total Flops: 6590
+Time running: 1.033872
+Run 14 -----------------------------------------------------------------------------------------------
+Total Instructions: 2919239114
+Total Clock Cycles: 2573031248
+Total Flops: 6725
+Time running: 1.033528
+Run 15 -----------------------------------------------------------------------------------------------
+Total Instructions: 2929051301
+Total Clock Cycles: 2430167139
+Total Flops: 6730
+Time running: 0.976151
+Run 16 -----------------------------------------------------------------------------------------------
+Total Instructions: 2927755583
+Total Clock Cycles: 2473575517
+Total Flops: 6700
+Time running: 0.993678
+Run 17 -----------------------------------------------------------------------------------------------
+Total Instructions: 2935747053
+Total Clock Cycles: 2572814728
+Total Flops: 6733
+Time running: 1.033141
+Run 18 -----------------------------------------------------------------------------------------------
+Total Instructions: 2919570953
+Total Clock Cycles: 2560185867
+Total Flops: 6512
+Time running: 1.028443
+Run 19 -----------------------------------------------------------------------------------------------
+Total Instructions: 2925310911
+Total Clock Cycles: 2566017397
+Total Flops: 6705
+Time running: 1.030754
+Run 20 -----------------------------------------------------------------------------------------------
+Total Instructions: 2939852296
+Total Clock Cycles: 2561620672
+Total Flops: 6523
+Time running: 1.028761
+Caches:
+Run 1 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149170343
+L2 Total Cache Misses: 117307403
+L3 Total Cache Misses: 29459095
+L2 Total Cache Accesses: 149239456
+L3 Total Cache Accesses: 117307403
+Time running: 1.035331
+Run 2 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149685352
+L2 Total Cache Misses: 117463820
+L3 Total Cache Misses: 29664693
+L2 Total Cache Accesses: 149756319
+L3 Total Cache Accesses: 117463820
+Time running: 1.027308
+Run 3 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149437648
+L2 Total Cache Misses: 117500390
+L3 Total Cache Misses: 25327391
+L2 Total Cache Accesses: 149519591
+L3 Total Cache Accesses: 117500390
+Time running: 1.000546
+Run 4 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149508539
+L2 Total Cache Misses: 117583267
+L3 Total Cache Misses: 24627314
+L2 Total Cache Accesses: 149580111
+L3 Total Cache Accesses: 117583267
+Time running: 0.988648
+Run 5 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149720875
+L2 Total Cache Misses: 117334919
+L3 Total Cache Misses: 29655039
+L2 Total Cache Accesses: 149795487
+L3 Total Cache Accesses: 117334919
+Time running: 1.033329
+Run 6 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149341444
+L2 Total Cache Misses: 117677382
+L3 Total Cache Misses: 29386561
+L2 Total Cache Accesses: 149412719
+L3 Total Cache Accesses: 117677382
+Time running: 1.029942
+Run 7 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149336946
+L2 Total Cache Misses: 117970488
+L3 Total Cache Misses: 22148009
+L2 Total Cache Accesses: 149413041
+L3 Total Cache Accesses: 117970488
+Time running: 0.975042
+Run 8 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149496922
+L2 Total Cache Misses: 117599720
+L3 Total Cache Misses: 22461844
+L2 Total Cache Accesses: 149571357
+L3 Total Cache Accesses: 117599720
+Time running: 0.977538
+Run 9 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149581630
+L2 Total Cache Misses: 117469752
+L3 Total Cache Misses: 29840781
+L2 Total Cache Accesses: 149654125
+L3 Total Cache Accesses: 117469752
+Time running: 1.021631
+Run 10 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149355929
+L2 Total Cache Misses: 117122955
+L3 Total Cache Misses: 29717683
+L2 Total Cache Accesses: 149424201
+L3 Total Cache Accesses: 117122955
+Time running: 1.034831
+Run 11 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149405633
+L2 Total Cache Misses: 117382856
+L3 Total Cache Misses: 29640502
+L2 Total Cache Accesses: 149473855
+L3 Total Cache Accesses: 117382856
+Time running: 1.034275
+Run 12 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149747524
+L2 Total Cache Misses: 117399075
+L3 Total Cache Misses: 29649454
+L2 Total Cache Accesses: 149819791
+L3 Total Cache Accesses: 117399075
+Time running: 1.032093
+Run 13 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149295537
+L2 Total Cache Misses: 115402830
+L3 Total Cache Misses: 27945325
+L2 Total Cache Accesses: 149373297
+L3 Total Cache Accesses: 115402830
+Time running: 1.044272
+Run 14 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149622335
+L2 Total Cache Misses: 117430560
+L3 Total Cache Misses: 29634098
+L2 Total Cache Accesses: 149690209
+L3 Total Cache Accesses: 117430560
+Time running: 1.014535
+Run 15 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149350177
+L2 Total Cache Misses: 115216674
+L3 Total Cache Misses: 28156134
+L2 Total Cache Accesses: 149429638
+L3 Total Cache Accesses: 115216674
+Time running: 1.043548
+Run 16 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149446457
+L2 Total Cache Misses: 117300030
+L3 Total Cache Misses: 29500126
+L2 Total Cache Accesses: 149510933
+L3 Total Cache Accesses: 117300030
+Time running: 1.026158
+Run 17 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149719594
+L2 Total Cache Misses: 117273643
+L3 Total Cache Misses: 29639951
+L2 Total Cache Accesses: 149792478
+L3 Total Cache Accesses: 117273643
+Time running: 1.033575
+Run 18 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149154401
+L2 Total Cache Misses: 117371790
+L3 Total Cache Misses: 26629394
+L2 Total Cache Accesses: 149224963
+L3 Total Cache Accesses: 117371790
+Time running: 1.008607
+Run 19 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149637847
+L2 Total Cache Misses: 117197324
+L3 Total Cache Misses: 29416064
+L2 Total Cache Accesses: 149708634
+L3 Total Cache Accesses: 117197324
+Time running: 1.036552
+Run 20 -----------------------------------------------------------------------------------------------
+L1 Data Cache Misses: 149452531
+L2 Total Cache Misses: 117545559
+L3 Total Cache Misses: 29596984
+L2 Total Cache Accesses: 149521834
+L3 Total Cache Accesses: 117545559
+Time running: 1.034177
