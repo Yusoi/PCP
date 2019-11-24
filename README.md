@@ -26,7 +26,7 @@ To test, uncomment the ***SWITCH*** flag on the Makefile
 
 ### TODO List:
 - Testing Optimization flags and find the best one for the algorithm. (done)
-- Testing the same size Heap Memory vs Stack Memory, in this case 1023x1023.
+- Testing the same size Heap Memory vs Stack Memory, in this case 1023x1023. (done)
 - Test different memory block sizes in _mm_malloc_.
 - Improve the algorithm by matrix switching instead o copying.
 - See how scalable the algorithm feels by increasing the matrix size.
