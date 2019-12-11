@@ -7,12 +7,6 @@
 #define N_MACHINES 24
 #define M_SIZE 1023
 
-int copy_cross(int *cross)
-{
-}
-
-int master()
-
 int main(int argc, char *argv[])
 {
     FILE *file = fopen("result.txt", "w+");
