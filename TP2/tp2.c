@@ -11,14 +11,6 @@ int main(int argc, char *argv[])
 {
     FILE *file = fopen("result.txt", "w+");
 
-    int G1[M_SIZE][M_SIZE] = {{0}};
-
-    //Filling the lower line of the matrix with the highest heat
-    for (int i = 0; i < M_SIZE; i++)
-    {
-        G1[i][0] = 0xffffff; //Hexcode ffffff
-    }
-
     int rank;
     MPI_Status status;
     int send[7] = {0};
@@ -27,11 +19,37 @@ int main(int argc, char *argv[])
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+    if (rank == 0)
+    {
+        int G1[M_SIZE][M_SIZE] = {{0}};
+
+        //Filling the lower line of the matrix with the highest heat
+        for (int i = 0; i < M_SIZE; i++)
+        {
+            G1[i][0] = 0xffffff; //Hexcode ffffff
+        }
+    }
+
+
+    //Ping-pong Tcomm calculation
+    double start_time = MPI_Wtime();
+
+    int ex = 1;
+    double end_time = 0;
+
+    if(rank == 0){
+        MPI_Send(ex, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
+    }
+    if(rank == 1){
+        MPI_Receive(ex, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+        double end_time = MPI_Wtime();
+        printf("Ts: %lf\nTcomm: %lf\n",end_time-start_time,(end_time-start_time)*4);
+    }
+
+
+
     //Iterações sobre a difusão de calor
-
-    int it;
-
-    for (int it = 0; it < N_MAX;i++)
+    for (int it = 0; it < N_MAX; i++)
     {
         if (rank == 0)
         {
@@ -39,16 +57,6 @@ int main(int argc, char *argv[])
             {
                 for (int j = 1; j < M_SIZE - 1; j++)
                 {
-
-                    /*
-                    G2[i][j] = (G1[i - 1][j] +
-                                G1[i + 1][j] +
-                                G1[i][j - 1] +
-                                G1[i][j + 1] +
-                                G1[i][j]) /
-                               5;
-                    */
-
                     send[0] = G1[i - 1][j];
                     send[1] = G1[i + 1][j];
                     send[2] = G1[i][j - 1];
@@ -83,7 +91,7 @@ int main(int argc, char *argv[])
                 MPI_Receive(send, 7, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
                 if (buffer[0] != -1)
                 {
-                    receive[0] = (send[0]+send[1]+send[2]+send[3]+send[4]) / 5;
+                    receive[0] = (send[0] + send[1] + send[2] + send[3] + send[4]) / 5;
                     receive[1] = send[5];
                     receive[2] = send[6];
                     MPI_Send(receive, 3, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
