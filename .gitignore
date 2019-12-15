@@ -55,3 +55,5 @@ dkms.conf
 output.txt
 error.txt
 result.txt
+
+.vscode
