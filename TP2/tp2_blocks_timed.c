@@ -12,10 +12,21 @@
 //#define MEASUREMENTS
 //#define DEBUG
 
+int max(int num1, int num2)
+{
+    return (num1 > num2 ) ? num1 : num2;
+}
+
 int main(int argc, char *argv[])
 {
+    double global_start_time = MPI_Wtime();
+    double end_r0, global_end_time, tcomp1, tcomp2, tcomp3;
+    tcomp1 = tcomp2 = tcomp3 = 0;
     int rank;
     MPI_Status status;
+
+    
+    
 
     //send = (int *)calloc((edges_area + 2),sizeof(int));
     //receive = (int *)calloc((block_area + 2),sizeof(int));
@@ -28,7 +39,7 @@ int main(int argc, char *argv[])
     int block_area = block_side * block_side;
 
     int send[edges_area + 2];
-    int receive[block_area + 2];
+    int receive[block_area + 2 + 1];
 
     int **G1 = (int **)malloc(M_SIZE * sizeof(int *));
     for (int i = 0; i < M_SIZE; i++)
@@ -51,8 +62,7 @@ int main(int argc, char *argv[])
     fflush(stdout);
 #endif
 
-    double start_time = MPI_Wtime();
-    double end_time = 0;
+    start_time = MPI_Wtime();
 
     //Iterações sobre a difusão de calor
     for (int it = 0; it < N_MAX; it++)
@@ -61,6 +71,8 @@ int main(int argc, char *argv[])
         {
             int mach = 1;
             int count = 0;
+
+            double start_r0 = MPI_Wtime();
 
             for (int i = 1; i < M_SIZE - 1; i += block_side)
             {
@@ -103,6 +115,8 @@ int main(int argc, char *argv[])
                     printf("Second Send Rank: %d\n", mach);
                     fflush(stdout);
 #endif
+                    double end_r0 = MPI_Wtime();
+                    tcomp1 = max(end_r0-start_r0, tcomp1);
                     MPI_Send(&send, edges_area + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
 #ifdef DEBUG
                     printf("Second Send Sent\n");
@@ -140,13 +154,15 @@ int main(int argc, char *argv[])
                 fflush(stdout);
 #endif
 
-                MPI_Recv(&receive, block_area + 2, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+                MPI_Recv(&receive, block_area + 2 + 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+                tcomp2 = max(tcomp2,receive[block_side*block_side+2]);//verificar que é o fim do array
 
 #ifdef DEBUG
                 printf("Second Receive Received\n");
                 fflush(stdout);
 #endif
-
+                
+                start_r0 = MPI_Wtime();
                 for (int u = 0; u < block_side; u++)
                 {
                     for (int v = 0; v < block_side; v++)
@@ -155,6 +171,8 @@ int main(int argc, char *argv[])
                         G1[receive[0] + u][receive[1] + v] = receive[2 + u * block_side + v];
                     }
                 }
+                end_r0 = MPI_Wtime();
+                tcomp3 = max (end_r0-start_r0, tcomp3);
             }
         }
         else
@@ -177,6 +195,7 @@ int main(int argc, char *argv[])
 
                 if (send[0] != -1)
                 {
+                    double start_rx = MPI_Wtime();
                     receive[0] = send[0];
                     receive[1] = send[1];
                     for (int u = 0; u < block_side; u++)
@@ -191,12 +210,14 @@ int main(int argc, char *argv[])
                                                          /5;
                         }
                     }
+                    double end_rx = MPI_Wtime();
+                    receive[block_side*block_side+2] = end_rx-start_rx;
 
 #ifdef DEBUG
                     printf("Third Send Rank: %d\n", rank);
                     fflush(stdout);
 #endif
-                    MPI_Send(&receive, block_area + 2, MPI_INT, 0, 0, MPI_COMM_WORLD);
+                    MPI_Send(&receive, block_area + 2 + 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 
 #ifdef DEBUG
                     printf("Third Send Sent %d\n", rank);
@@ -216,12 +237,15 @@ int main(int argc, char *argv[])
         }
     }
 
-    end_time = MPI_Wtime();
+    global_end_time = MPI_Wtime();
 
     
     if (rank == 0)
     {
-        printf("Total time: %lf seconds\n", end_time - start_time);
+        printf("Total time: %lf seconds\n", global_end_time - global_start_time);
+        printf("Time tcomp1: %lf seconds\n", tcomp1);
+        printf("Time tcomp2: %lf seconds\n", tcomp2);
+        printf("Time tcomp3: %lf seconds\n", tcomp3);
 
         //Prints results to a file
         FILE *file = fopen("result.txt", "w+");
