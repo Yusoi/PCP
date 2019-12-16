@@ -21,9 +21,9 @@ int max(int num1, int num2)
 
 int main(int argc, char *argv[])
 {
-    timeval time;
+    struct timeval time;
     gettimeofday(&time, NULL);
-    long long unsigned end_r0, global_end_time, tcomp1, tcomp2, tcomp3;
+    long long unsigned end_r0, start_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3;
     long long unsigned global_start_time, global_end_time, initial_time, final_time;
 
     global_start_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
@@ -78,13 +78,13 @@ int main(int argc, char *argv[])
             int mach = 1;
             int count = 0;
 
-            gettimeofday(&time, NULL);
-            start_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-
             for (int i = 1; i < M_SIZE - 1; i += block_side)
             {
                 for (int j = 1; j < M_SIZE - 1; j += block_side, mach++)
                 {
+
+                    gettimeofday(&time, NULL);
+                    start_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
                     if (mach > N_MACHINES - 1)
                     {
@@ -255,10 +255,10 @@ int main(int argc, char *argv[])
     
     if (rank == 0)
     {
-        printf("Total time: %lf seconds\n", global_end_time - global_start_time);
-        printf("Time tcomp1: %lf seconds\n", tcomp1);
-        printf("Time tcomp2: %lf seconds\n", tcomp2);
-        printf("Time tcomp3: %lf seconds\n", tcomp3);
+        printf("Total time: %lld us\n", global_end_time - global_start_time);
+        printf("Time tcomp1: %lld us\n", tcomp1);
+        printf("Time tcomp2: %lld us\n", tcomp2);
+        printf("Time tcomp3: %lld us\n", tcomp3);
 
         //Prints results to a file
         FILE *file = fopen("result.txt", "w+");
