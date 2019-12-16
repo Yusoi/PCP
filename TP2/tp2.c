@@ -5,7 +5,7 @@
 #include <time.h>
 
 #define N_MAX 1000
-#define M_SIZE 1023
+#define M_SIZE 1024
 //#define N_MACHINES 4
 //#define MEASUREMENTS
 //#define DEBUG

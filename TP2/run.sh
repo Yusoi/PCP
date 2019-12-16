@@ -15,11 +15,9 @@ array_num_machines=(2 4 6 8 10 12 14 16 20 24 28 32)
 for i in $array_num_machines
 do	
 	export NUM_MACHINES=$i
+	export FILENAME=tp2
 	echo "Number of Machines: $NUM_MACHINES"
 	make clean
-	make NUM_MACHINES=$NUM_MACHINES
-	for i in {1..10}
-	do
-		mpirun -np $NUM_MACHINES --map-by ppr:1:core bin/tp2.o
-	done
+	make NUM_MACHINES=$NUM_MACHINES FILENAME=$FILENAME
+	mpirun -np $NUM_MACHINES --map-by ppr:1:core --ma btl self,sm,tcp bin/${FILENAME}.o
 done

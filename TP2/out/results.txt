@@ -1,0 +1,78 @@
+Number of Machines: 2
+mpicc -DN_MACHINES=2 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+[[14098,1],1]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 535.817927 seconds
+--------------------------------------------------------------------------
+[[14118,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 566.536089 seconds
+--------------------------------------------------------------------------
+[[14025,1],1]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 544.784999 seconds
+--------------------------------------------------------------------------
+[[14077,1],1]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 544.885742 seconds
+--------------------------------------------------------------------------
+[[13967,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 547.682315 seconds
+--------------------------------------------------------------------------
+[[13983,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+Total time: 562.334209 seconds
+--------------------------------------------------------------------------
+[[13987,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: compute-641-4
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
