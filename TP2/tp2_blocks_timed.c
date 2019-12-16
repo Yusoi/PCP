@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/time.h>
 #include <mpi.h>
 #include <time.h>
 #include <string.h>
@@ -8,6 +9,7 @@
 
 #define N_MAX 1000
 #define M_SIZE 1024
+#define TIME_RESOLUTION 1000000
 //#define N_MACHINES 4
 //#define MEASUREMENTS
 //#define DEBUG
@@ -19,13 +21,16 @@ int max(int num1, int num2)
 
 int main(int argc, char *argv[])
 {
-    double global_start_time = MPI_Wtime();
-    double end_r0, global_end_time, tcomp1, tcomp2, tcomp3;
+    timeval time;
+    gettimeofday(&time, NULL);
+    long long unsigned end_r0, global_end_time, tcomp1, tcomp2, tcomp3;
+    long long unsigned global_start_time, global_end_time, initial_time, final_time;
+
+    global_start_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
+
     tcomp1 = tcomp2 = tcomp3 = 0;
     int rank;
     MPI_Status status;
-
-    
     
 
     //send = (int *)calloc((edges_area + 2),sizeof(int));
@@ -62,7 +67,8 @@ int main(int argc, char *argv[])
     fflush(stdout);
 #endif
 
-    start_time = MPI_Wtime();
+    gettimeofday(&time, NULL);
+    start_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
     //Iterações sobre a difusão de calor
     for (int it = 0; it < N_MAX; it++)
@@ -72,7 +78,8 @@ int main(int argc, char *argv[])
             int mach = 1;
             int count = 0;
 
-            double start_r0 = MPI_Wtime();
+            gettimeofday(&time, NULL);
+            start_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
             for (int i = 1; i < M_SIZE - 1; i += block_side)
             {
@@ -115,7 +122,8 @@ int main(int argc, char *argv[])
                     printf("Second Send Rank: %d\n", mach);
                     fflush(stdout);
 #endif
-                    double end_r0 = MPI_Wtime();
+                    gettimeofday(&time, NULL);
+                    end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                     tcomp1 = max(end_r0-start_r0, tcomp1);
                     MPI_Send(&send, edges_area + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
 #ifdef DEBUG
@@ -162,7 +170,8 @@ int main(int argc, char *argv[])
                 fflush(stdout);
 #endif
                 
-                start_r0 = MPI_Wtime();
+                gettimeofday(&time, NULL);
+                start_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                 for (int u = 0; u < block_side; u++)
                 {
                     for (int v = 0; v < block_side; v++)
@@ -171,7 +180,8 @@ int main(int argc, char *argv[])
                         G1[receive[0] + u][receive[1] + v] = receive[2 + u * block_side + v];
                     }
                 }
-                end_r0 = MPI_Wtime();
+                gettimeofday(&time, NULL);
+                end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                 tcomp3 = max (end_r0-start_r0, tcomp3);
             }
         }
@@ -195,7 +205,8 @@ int main(int argc, char *argv[])
 
                 if (send[0] != -1)
                 {
-                    double start_rx = MPI_Wtime();
+                    gettimeofday(&time, NULL);
+                    start_rx = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                     receive[0] = send[0];
                     receive[1] = send[1];
                     for (int u = 0; u < block_side; u++)
@@ -210,7 +221,8 @@ int main(int argc, char *argv[])
                                                          /5;
                         }
                     }
-                    double end_rx = MPI_Wtime();
+                    gettimeofday(&time, NULL);
+                    end_rx = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                     receive[block_side*block_side+2] = end_rx-start_rx;
 
 #ifdef DEBUG
@@ -237,7 +249,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    global_end_time = MPI_Wtime();
+    gettimeofday(&time, NULL);
+    global_end_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
     
     if (rank == 0)
