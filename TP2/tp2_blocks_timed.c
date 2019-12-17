@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 {
     struct timeval time;
     gettimeofday(&time, NULL);
-    long long unsigned end_r0, start_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3;
+    long long unsigned end_r0, start_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3, tcomm1, tcomm2;
     long long unsigned global_start_time, global_end_time, initial_time, final_time;
 
     global_start_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
     int edges_area = (block_side + 2) * (block_side + 2);
     int block_area = block_side * block_side;
 
-    int send[edges_area + 2];
-    int receive[block_area + 2 + 1];
+    int send[edges_area + 2 + 2];
+    int receive[block_area + 2 + 1 + 2];
 
     int **G1 = (int **)malloc(M_SIZE * sizeof(int *));
     for (int i = 0; i < M_SIZE; i++)
@@ -117,6 +117,7 @@ int main(int argc, char *argv[])
                             send[2 + u * block_side + v] = G1[i - 1 + u][j - 1 + v];
                         }
                     }
+                    
 
 #ifdef DEBUG
                     printf("Second Send Rank: %d\n", mach);
@@ -124,8 +125,9 @@ int main(int argc, char *argv[])
 #endif
                     gettimeofday(&time, NULL);
                     end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
+                    send[block_side*block_side] = end_r0;
                     tcomp1 = max(end_r0-start_r0, tcomp1);
-                    MPI_Send(&send, edges_area + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
+                    MPI_Send(&send, edges_area + 2 + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
 #ifdef DEBUG
                     printf("Second Send Sent\n");
                     fflush(stdout);
@@ -145,7 +147,7 @@ int main(int argc, char *argv[])
 
             for (int i = 1; i <= N_MACHINES - 1; i++)
             {
-                MPI_Send(&send, edges_area + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
+                MPI_Send(&send, edges_area + 2 + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
             }
 
 #ifdef DEBUG
@@ -162,7 +164,7 @@ int main(int argc, char *argv[])
                 fflush(stdout);
 #endif
 
-                MPI_Recv(&receive, block_area + 2 + 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+                MPI_Recv(&receive, block_area + 2 + 2, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
                 tcomp2 = max(tcomp2,receive[block_side*block_side+2]);//verificar que é o fim do array
 
 #ifdef DEBUG
@@ -182,7 +184,11 @@ int main(int argc, char *argv[])
                 }
                 gettimeofday(&time, NULL);
                 end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-                tcomp3 = max (end_r0-start_r0, tcomp3);
+                end_rx = receive[block_side*block_side+2+2];
+                tcomm1 = max(receive[block_side*block_side+2+1],tcomm1);
+                tcomm2 = max(tcomm2,start_r0 - end_rx);
+                tcomp3 = max(end_r0 - start_r0, tcomp3);
+                
             }
         }
         else
@@ -196,7 +202,7 @@ int main(int argc, char *argv[])
                 fflush(stdout);
 #endif
 
-                MPI_Recv(&send, edges_area + 2, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+                MPI_Recv(&send, edges_area + 2 + 2, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
 
 #ifdef DEBUG
                 printf("Third Receive Received Rank: %d\n", rank);
@@ -222,14 +228,17 @@ int main(int argc, char *argv[])
                         }
                     }
                     gettimeofday(&time, NULL);
+                    end_r0 = send[edges_area+1];
                     end_rx = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                     receive[block_side*block_side+2] = end_rx-start_rx;
+                    receive[block_side*block_side+2+1] = send[block_side*block_side] - start_rx;
+                    receive[block_side*block_side+2+2] = end_rx;
 
 #ifdef DEBUG
                     printf("Third Send Rank: %d\n", rank);
                     fflush(stdout);
 #endif
-                    MPI_Send(&receive, block_area + 2 + 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+                    MPI_Send(&receive, block_area + 2 + 2 + 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 
 #ifdef DEBUG
                     printf("Third Send Sent %d\n", rank);
