@@ -7,7 +7,6 @@
 #include <string.h>
 #include <math.h>
 
-#define INT_MAX 2147483647
 #define N_MAX 1000
 #define M_SIZE 1024
 #define TIME_RESOLUTION 1000000
