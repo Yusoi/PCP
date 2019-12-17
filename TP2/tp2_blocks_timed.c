@@ -7,6 +7,7 @@
 #include <string.h>
 #include <math.h>
 
+#define INT_MAX 2147483647
 #define N_MAX 1000
 #define M_SIZE 1024
 #define TIME_RESOLUTION 1000000
@@ -19,16 +20,19 @@ int max(int num1, int num2)
     return (num1 > num2 ) ? num1 : num2;
 }
 
+int min(int num1, int num2)
+{
+    return (num1 < num2 ) ? num1 : num2;
+}
+
 int main(int argc, char *argv[])
 {
     struct timeval time;
     gettimeofday(&time, NULL);
-    long long unsigned end_r0, start_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3, tcomm1, tcomm2;
-    long long unsigned global_start_time, global_end_time, initial_time, final_time;
+    long long unsigned end_r0, start_time, end_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3, tcomm1, tcomm2;
 
-    global_start_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-
-    tcomp1 = tcomp2 = tcomp3 = 0;
+    tcomp1 = tcomp2 = tcomp3 = tcomm1 = tcomm2 = 0;
+    
     int rank;
     MPI_Status status;
     
@@ -125,7 +129,7 @@ int main(int argc, char *argv[])
 #endif
                     gettimeofday(&time, NULL);
                     end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-                    send[block_side*block_side] = end_r0;
+                    send[edges_area+1] = end_r0;
                     tcomp1 = max(end_r0-start_r0, tcomp1);
                     MPI_Send(&send, edges_area + 2 + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
 #ifdef DEBUG
@@ -164,7 +168,7 @@ int main(int argc, char *argv[])
                 fflush(stdout);
 #endif
 
-                MPI_Recv(&receive, block_area + 2 + 2, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+                MPI_Recv(&receive, block_area + 2 + 2 + 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
                 tcomp2 = max(tcomp2,receive[block_side*block_side+2]);//verificar que é o fim do array
 
 #ifdef DEBUG
@@ -230,8 +234,9 @@ int main(int argc, char *argv[])
                     gettimeofday(&time, NULL);
                     end_r0 = send[edges_area+1];
                     end_rx = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
+                    //Tcomp2
                     receive[block_side*block_side+2] = end_rx-start_rx;
-                    receive[block_side*block_side+2+1] = send[block_side*block_side] - start_rx;
+                    receive[block_side*block_side+2+1] = start_rx - end_r0;
                     receive[block_side*block_side+2+2] = end_rx;
 
 #ifdef DEBUG
@@ -259,15 +264,17 @@ int main(int argc, char *argv[])
     }
 
     gettimeofday(&time, NULL);
-    global_end_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
+    end_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
     
     if (rank == 0)
     {
-        printf("Total time: %lld us\n", global_end_time - global_start_time);
+        printf("Total time: %lld us\n", end_time - start_time);
         printf("Time tcomp1: %lld us\n", tcomp1);
         printf("Time tcomp2: %lld us\n", tcomp2);
         printf("Time tcomp3: %lld us\n", tcomp3);
+        printf("Time tcomm1: %lld us\n", tcomm1);
+        printf("Time tcomm2: %lld us\n", tcomm2);
 
         //Prints results to a file
         FILE *file = fopen("result.txt", "w+");
