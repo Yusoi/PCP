@@ -17,12 +17,12 @@
 
 int max(int num1, int num2)
 {
-    return (num1 > num2 ) ? num1 : num2;
+    return (num1 > num2) ? num1 : num2;
 }
 
 int min(int num1, int num2)
 {
-    return (num1 < num2 ) ? num1 : num2;
+    return (num1 < num2) ? num1 : num2;
 }
 
 int main(int argc, char *argv[])
@@ -32,10 +32,9 @@ int main(int argc, char *argv[])
     long long unsigned end_r0, start_time, end_time, start_r0, start_rx, end_rx, tcomp1, tcomp2, tcomp3, tcomm1, tcomm2;
 
     tcomp1 = tcomp2 = tcomp3 = tcomm1 = tcomm2 = 0;
-    
+
     int rank;
     MPI_Status status;
-    
 
     //send = (int *)calloc((edges_area + 2),sizeof(int));
     //receive = (int *)calloc((block_area + 2),sizeof(int));
@@ -121,7 +120,6 @@ int main(int argc, char *argv[])
                             send[2 + u * block_side + v] = G1[i - 1 + u][j - 1 + v];
                         }
                     }
-                    
 
 #ifdef DEBUG
                     printf("Second Send Rank: %d\n", mach);
@@ -129,8 +127,8 @@ int main(int argc, char *argv[])
 #endif
                     gettimeofday(&time, NULL);
                     end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-                    send[edges_area+1] = end_r0;
-                    tcomp1 = max(end_r0-start_r0, tcomp1);
+                    send[edges_area + 1] = end_r0;
+                    tcomp1 = max(end_r0 - start_r0, tcomp1);
                     MPI_Send(&send, edges_area + 2 + 2, MPI_INT, mach, 0, MPI_COMM_WORLD);
 #ifdef DEBUG
                     printf("Second Send Sent\n");
@@ -169,13 +167,13 @@ int main(int argc, char *argv[])
 #endif
 
                 MPI_Recv(&receive, block_area + 2 + 2 + 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-                tcomp2 = max(tcomp2,receive[block_side*block_side+2]);//verificar que é o fim do array
+                tcomp2 = max(tcomp2, receive[block_side * block_side + 2]); //verificar que é o fim do array
 
 #ifdef DEBUG
                 printf("Second Receive Received\n");
                 fflush(stdout);
 #endif
-                
+
                 gettimeofday(&time, NULL);
                 start_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                 for (int u = 0; u < block_side; u++)
@@ -188,11 +186,10 @@ int main(int argc, char *argv[])
                 }
                 gettimeofday(&time, NULL);
                 end_r0 = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
-                end_rx = receive[block_side*block_side+2+2];
-                tcomm1 = max(receive[block_side*block_side+2+1],tcomm1);
-                tcomm2 = max(tcomm2,start_r0 - end_rx);
+                end_rx = receive[block_side * block_side + 2 + 2];
+                tcomm1 = max(receive[block_side * block_side + 2 + 1], tcomm1);
+                tcomm2 = max(tcomm2, start_r0 - end_rx);
                 tcomp3 = max(end_r0 - start_r0, tcomp3);
-                
             }
         }
         else
@@ -223,21 +220,21 @@ int main(int argc, char *argv[])
                     {
                         for (int v = 0; v < block_side; v++)
                         {
-                            receive[2+u*block_side+v] = (send[2+(u-1)*block_side+v] +
-                                                         send[2+u*block_side+v] +
-                                                         send[2+(u+1)*block_side+v] +
-                                                         send[2+u*block_side+(v+1)] +
-                                                         send[2+u*block_side+(v-1)])
-                                                         /5;
+                            receive[2 + u * block_side + v] = (send[2 + (u - 1) * block_side + v] +
+                                                               send[2 + u * block_side + v] +
+                                                               send[2 + (u + 1) * block_side + v] +
+                                                               send[2 + u * block_side + (v + 1)] +
+                                                               send[2 + u * block_side + (v - 1)]) /
+                                                              5;
                         }
                     }
                     gettimeofday(&time, NULL);
-                    end_r0 = send[edges_area+1];
+                    end_r0 = send[edges_area + 1];
                     end_rx = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
                     //Tcomp2
-                    receive[block_side*block_side+2] = end_rx-start_rx;
-                    receive[block_side*block_side+2+1] = start_rx - end_r0;
-                    receive[block_side*block_side+2+2] = end_rx;
+                    receive[block_side * block_side + 2] = end_rx - start_rx;
+                    receive[block_side * block_side + 2 + 1] = start_rx - end_r0;
+                    receive[block_side * block_side + 2 + 2] = end_rx;
 
 #ifdef DEBUG
                     printf("Third Send Rank: %d\n", rank);
@@ -266,7 +263,6 @@ int main(int argc, char *argv[])
     gettimeofday(&time, NULL);
     end_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
 
-    
     if (rank == 0)
     {
         printf("Total time: %lld us\n", end_time - start_time);
