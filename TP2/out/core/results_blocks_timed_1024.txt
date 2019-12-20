@@ -1,0 +1,104 @@
+Number of Machines: 2
+mpicc -Wall -DN_MACHINES=2 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 4190750 us
+Time tcomp1: 14 us
+Time tcomp2: 40 us
+Time tcomp3: 14 us
+Time tcomm1: 49 us
+Time tcomm2: 7341 us
+Number of Machines: 4
+mpicc -Wall -DN_MACHINES=4 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 3780834 us
+Time tcomp1: 14 us
+Time tcomp2: 31 us
+Time tcomp3: 14 us
+Time tcomm1: 62 us
+Time tcomm2: 7043 us
+Number of Machines: 6
+mpicc -Wall -DN_MACHINES=6 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 3847164 us
+Time tcomp1: 11 us
+Time tcomp2: 14 us
+Time tcomp3: 22 us
+Time tcomm1: 82 us
+Time tcomm2: 7159 us
+Number of Machines: 8
+mpicc -Wall -DN_MACHINES=8 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 3791634 us
+Time tcomp1: 18 us
+Time tcomp2: 28 us
+Time tcomp3: 9 us
+Time tcomm1: 86 us
+Time tcomm2: 7245 us
+Number of Machines: 10
+mpicc -Wall -DN_MACHINES=10 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 4488124 us
+Time tcomp1: 13 us
+Time tcomp2: 8 us
+Time tcomp3: 10 us
+Time tcomm1: 80 us
+Time tcomm2: 6860 us
+Number of Machines: 12
+mpicc -Wall -DN_MACHINES=12 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 4771577 us
+Time tcomp1: 17 us
+Time tcomp2: 16 us
+Time tcomp3: 18 us
+Time tcomm1: 84 us
+Time tcomm2: 7352 us
+Number of Machines: 14
+mpicc -Wall -DN_MACHINES=14 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 4928324 us
+Time tcomp1: 8 us
+Time tcomp2: 10 us
+Time tcomp3: 35 us
+Time tcomm1: 252 us
+Time tcomm2: 7931 us
+Number of Machines: 16
+mpicc -Wall -DN_MACHINES=16 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 5071009 us
+Time tcomp1: 9 us
+Time tcomp2: 9 us
+Time tcomp3: 9 us
+Time tcomm1: 81 us
+Time tcomm2: 7938 us
+Number of Machines: 20
+mpicc -Wall -DN_MACHINES=20 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 9600517 us
+Time tcomp1: 10 us
+Time tcomp2: 79 us
+Time tcomp3: 383 us
+Time tcomm1: 965 us
+Time tcomm2: 15123 us
+Number of Machines: 24
+mpicc -Wall -DN_MACHINES=24 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2_blocks_timed_1024.o
+Node: compute-641-15
+
+while attempting to start process rank 16.
+--------------------------------------------------------------------------
+8 total processes failed to start
+Number of Machines: 28
+mpicc -Wall -DN_MACHINES=28 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 20073978 us
+Time tcomp1: 10 us
+Time tcomp2: 34 us
+Time tcomp3: 44 us
+Time tcomm1: 9913 us
+Time tcomm2: 18920 us
+Number of Machines: 32
+mpicc -Wall -DN_MACHINES=32 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2_blocks_timed_1024.o
+Node: compute-641-15
+
+while attempting to start process rank 16.
+--------------------------------------------------------------------------
+16 total processes failed to start

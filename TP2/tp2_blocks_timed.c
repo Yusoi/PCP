@@ -7,8 +7,10 @@
 #include <string.h>
 #include <math.h>
 
+#define INT_MAX 2147483647
 #define N_MAX 1000
-#define M_SIZE 1024
+#define BLOCK_SIDE 30
+//#define M_SIZE 1024
 #define TIME_RESOLUTION 1000000
 //#define N_MACHINES 4
 //#define MEASUREMENTS
@@ -41,7 +43,7 @@ int main(int argc, char *argv[])
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    int block_side = (int)floor(sqrt(M_SIZE - 2));
+    int block_side = BLOCK_SIDE;
     int edges_area = (block_side + 2) * (block_side + 2);
     int block_area = block_side * block_side;
 

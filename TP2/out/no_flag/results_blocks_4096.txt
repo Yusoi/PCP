@@ -1,0 +1,36 @@
+Number of Machines: 2
+mpicc -Wall -DN_MACHINES=2 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 96.068255 seconds
+Number of Machines: 4
+mpicc -Wall -DN_MACHINES=4 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 121.260234 seconds
+Number of Machines: 6
+mpicc -Wall -DN_MACHINES=6 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 119.229482 seconds
+Number of Machines: 8
+mpicc -Wall -DN_MACHINES=8 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 119.147302 seconds
+Number of Machines: 10
+mpicc -Wall -DN_MACHINES=10 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 115.939852 seconds
+Number of Machines: 12
+mpicc -Wall -DN_MACHINES=12 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 117.724983 seconds
+Number of Machines: 14
+mpicc -Wall -DN_MACHINES=14 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 117.186331 seconds
+Number of Machines: 16
+mpicc -Wall -DN_MACHINES=16 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 117.164781 seconds
+Number of Machines: 20
+mpicc -Wall -DN_MACHINES=20 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 135.791930 seconds
+Number of Machines: 24
+mpicc -Wall -DN_MACHINES=24 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 174.948900 seconds
+Number of Machines: 28
+mpicc -Wall -DN_MACHINES=28 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 144.412254 seconds
+Number of Machines: 32
+mpicc -Wall -DN_MACHINES=32 -DM_SIZE=4096 -std=c11 -O3 -o bin/tp2_blocks_4096.o tp2_blocks.c
+Total time: 1841.657312 seconds

@@ -1,0 +1,96 @@
+Number of Machines: 2
+mpicc -Wall -DN_MACHINES=2 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 23486076 us
+Time tcomp1: 1529 us
+Time tcomp2: 36 us
+Time tcomp3: 24 us
+Time tcomm1: 1617 us
+Time tcomm2: 27663 us
+Number of Machines: 4
+mpicc -Wall -DN_MACHINES=4 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 30267961 us
+Time tcomp1: 914 us
+Time tcomp2: 20 us
+Time tcomp3: 45 us
+Time tcomm1: 736 us
+Time tcomm2: 33592 us
+Number of Machines: 6
+mpicc -Wall -DN_MACHINES=6 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29533232 us
+Time tcomp1: 935 us
+Time tcomp2: 20 us
+Time tcomp3: 23 us
+Time tcomm1: 976 us
+Time tcomm2: 33941 us
+Number of Machines: 8
+mpicc -Wall -DN_MACHINES=8 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29980203 us
+Time tcomp1: 971 us
+Time tcomp2: 28 us
+Time tcomp3: 22 us
+Time tcomm1: 123 us
+Time tcomm2: 34003 us
+Number of Machines: 10
+mpicc -Wall -DN_MACHINES=10 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29512957 us
+Time tcomp1: 934 us
+Time tcomp2: 19 us
+Time tcomp3: 17 us
+Time tcomm1: 97 us
+Time tcomm2: 33922 us
+Number of Machines: 12
+mpicc -Wall -DN_MACHINES=12 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29971046 us
+Time tcomp1: 35 us
+Time tcomp2: 66 us
+Time tcomp3: 20 us
+Time tcomm1: 883 us
+Time tcomm2: 34832 us
+Number of Machines: 14
+mpicc -Wall -DN_MACHINES=14 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29914658 us
+Time tcomp1: 21 us
+Time tcomp2: 49 us
+Time tcomp3: 1080 us
+Time tcomm1: 914 us
+Time tcomm2: 34296 us
+Number of Machines: 16
+mpicc -Wall -DN_MACHINES=16 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 29822281 us
+Time tcomp1: 38 us
+Time tcomp2: 49 us
+Time tcomp3: 15 us
+Time tcomm1: 703 us
+Time tcomm2: 35107 us
+Number of Machines: 20
+mpicc -Wall -DN_MACHINES=20 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 31005609 us
+Time tcomp1: 47 us
+Time tcomp2: 43 us
+Time tcomp3: 21 us
+Time tcomm1: 36988 us
+Time tcomm2: 91490 us
+Number of Machines: 24
+mpicc -Wall -DN_MACHINES=24 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 35210476 us
+Time tcomp1: 37 us
+Time tcomp2: 158 us
+Time tcomp3: 328 us
+Time tcomm1: 16896 us
+Time tcomm2: 236961 us
+Number of Machines: 28
+mpicc -Wall -DN_MACHINES=28 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 36403257 us
+Time tcomp1: 124 us
+Time tcomp2: 895 us
+Time tcomp3: 960 us
+Time tcomm1: 29954 us
+Time tcomm2: 481246 us
+Number of Machines: 32
+mpicc -Wall -DN_MACHINES=32 -DM_SIZE=2048 -std=c11 -O3 -o bin/tp2_blocks_timed_2048.o tp2_blocks_timed.c
+Total time: 3111644740 us
+Time tcomp1: 10257 us
+Time tcomp2: 10010 us
+Time tcomp3: 31 us
+Time tcomm1: 49787 us
+Time tcomm2: 4830018 us

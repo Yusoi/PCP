@@ -1,0 +1,136 @@
+Number of Machines: 2
+mpicc -Wall -DN_MACHINES=2 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 6681901 us
+Time tcomp1: 9 us
+Time tcomp2: 19 us
+Time tcomp3: 9 us
+Time tcomm1: 328 us
+Time tcomm2: 9270 us
+Number of Machines: 4
+mpicc -Wall -DN_MACHINES=4 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+Total time: 30096599 us
+Time tcomp1: 18 us
+Time tcomp2: 45 us
+Time tcomp3: 19 us
+Time tcomm1: 2663 us
+Time tcomm2: 29891 us
+Number of Machines: 6
+mpicc -Wall -DN_MACHINES=6 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  6
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 8
+mpicc -Wall -DN_MACHINES=8 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  8
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 10
+mpicc -Wall -DN_MACHINES=10 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  10
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 12
+mpicc -Wall -DN_MACHINES=12 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  12
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 14
+mpicc -Wall -DN_MACHINES=14 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  14
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 16
+mpicc -Wall -DN_MACHINES=16 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  16
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 20
+mpicc -Wall -DN_MACHINES=20 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  20
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 24
+mpicc -Wall -DN_MACHINES=24 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  24
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 28
+mpicc -Wall -DN_MACHINES=28 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  28
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
+Number of Machines: 32
+mpicc -Wall -DN_MACHINES=32 -DM_SIZE=1024 -std=c11 -O3 -o bin/tp2_blocks_timed_1024.o tp2_blocks_timed.c
+--------------------------------------------------------------------------
+Your job has requested more processes than the ppr for
+this topology can support:
+
+  App: bin/tp2_blocks_timed_1024.o
+  Number of procs:  32
+  PPR: 1:socket
+
+Please revise the conflict and try again.
+--------------------------------------------------------------------------
