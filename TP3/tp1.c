@@ -53,9 +53,6 @@ int main()
             for (int j = 1; j < M_SIZE - 1; j++)
             {
                 G2[i][j] = (G1[i - 1][j] + G1[i + 1][j] + G1[i][j - 1] + G1[i][j + 1] + G1[i][j]) / 5; j++;
-                G2[i][j] = (G1[i - 1][j] + G1[i + 1][j] + G1[i][j - 1] + G1[i][j + 1] + G1[i][j]) / 5; j++;
-                G2[i][j] = (G1[i - 1][j] + G1[i + 1][j] + G1[i][j - 1] + G1[i][j + 1] + G1[i][j]) / 5; j++;
-                G2[i][j] = (G1[i - 1][j] + G1[i + 1][j] + G1[i][j - 1] + G1[i][j + 1] + G1[i][j]) / 5; j++;
             }
         }
 
@@ -65,9 +62,6 @@ int main()
         {
             for (int j = 1; j < M_SIZE - 1; j++)
             {
-                G1[i][j] = G2[i][j]; j++;
-                G1[i][j] = G2[i][j]; j++;
-                G1[i][j] = G2[i][j]; j++;
                 G1[i][j] = G2[i][j]; j++;
             }
         }

@@ -6,12 +6,12 @@
 #define N_MAX 1000
 #define N_MACHINES 4
 #define MAT_SIZE 1024
-#define M_SIZE (MAT_SIZE+2)
+#define M_SIZE (MAT_SIZE + 2)
 
 int main(int argc, char *argv[])
 {
     FILE *file = fopen("result.txt", "w+");
-    
+
     int rank;
     int i_division = MAT_SIZE / N_MACHINES;
     int MACH_MAT_SIZE = i_division * M_SIZE;
@@ -22,8 +22,11 @@ int main(int argc, char *argv[])
     int left_send_buffer[M_SIZE], right_send_buffer[M_SIZE], left_recv_buffer[M_SIZE], right_recv_buffer[M_SIZE];
     int *final_send_buffer = (int *)malloc(sizeof(int) * M_SIZE * i_division);
     int *final_result_buffer = (int *)malloc(sizeof(int) * M_SIZE * MAT_SIZE);
+    if (final_send_buffer == NULL || final_result_buffer == NULL)
+    {
+        printf("NULL, not enough memory\n");
+    }
     MPI_Request left_send_request, right_send_request, left_recv_request, right_recv_request;
-    printf("MACHINE MATRIX SIZE: %d, RESULT MATRIX SIZE: %d\n",MACH_MAT_SIZE,M_SIZE*MAT_SIZE);
 
     int **G1 = (int **)malloc(sizeof(int *) * i_division);
     int **G2 = (int **)malloc(sizeof(int *) * i_division);
@@ -39,6 +42,7 @@ int main(int argc, char *argv[])
         }
 
         G1[i][0] = 0xffffff; //Hexcode ffffff
+        G2[i][0] = 0xffffff;
     }
 
     for (int j = 0; j < M_SIZE; j++)
@@ -103,13 +107,13 @@ int main(int argc, char *argv[])
         //Sends and receives assynchonously the buffers
         if (rank != 0)
         {
-            MPI_Isend(&left_send_buffer, M_SIZE, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, &left_send_request);
-            MPI_Irecv(&left_recv_buffer, M_SIZE, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, &left_recv_request);
+            MPI_Isend(left_send_buffer, M_SIZE, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, &left_send_request);
+            MPI_Irecv(left_recv_buffer, M_SIZE, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, &left_recv_request);
         }
         if (rank != N_MACHINES - 1)
         {
-            MPI_Isend(&right_send_buffer, M_SIZE, MPI_INT, rank + 1, 0, MPI_COMM_WORLD, &right_send_request);
-            MPI_Irecv(&right_recv_buffer, M_SIZE, MPI_INT, rank + 1, 0, MPI_COMM_WORLD, &right_recv_request);
+            MPI_Isend(right_send_buffer, M_SIZE, MPI_INT, rank + 1, 0, MPI_COMM_WORLD, &right_send_request);
+            MPI_Irecv(right_recv_buffer, M_SIZE, MPI_INT, rank + 1, 0, MPI_COMM_WORLD, &right_recv_request);
         }
 
         //Copies from G2 to G1
@@ -130,25 +134,17 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("PREGATHER rank: %d\n", rank);
-    fflush(stdout);
-
-    //TODO resolver problema com o gather
-
     //Rank 0 gathers results from all other ranks
     //int MPI_Gather(void* sendbuf, int sendcount, MPI_Datatype sendtype, void* recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
-    MPI_Gather(&final_send_buffer, MACH_MAT_SIZE, MPI_INT, &final_result_buffer, MACH_MAT_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
-
-    printf("POSTGATHER rank: %d\n", rank);
-    fflush(stdout);
+    MPI_Gather(final_send_buffer, MACH_MAT_SIZE, MPI_INT, final_result_buffer, MACH_MAT_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
 
     double end_time = MPI_Wtime();
 
     if (rank == 0)
     {
         //Creates the final matrix to output the result
-        int **FINAL_MAT = (int **)malloc(sizeof(int *) * i_division);
-        for (int i = 0; i < i_division; i++)
+        int **FINAL_MAT = (int **)malloc(sizeof(int *) * M_SIZE);
+        for (int i = 0; i < M_SIZE; i++)
         {
             FINAL_MAT[i] = (int *)malloc(sizeof(int) * M_SIZE);
         }
@@ -175,10 +171,11 @@ int main(int argc, char *argv[])
         for (int i = 0; i < M_SIZE; i++)
         {
             for (int j = 0; j < M_SIZE; j++)
-                fprintf(file, "%d|", G1[i][j]);
+            {
+                fprintf(file, "%d|", FINAL_MAT[i][j]);
+            }
+            fprintf(file, "\n");
         }
-
-        fprintf(file, "\n");
     }
 
     MPI_Finalize();
