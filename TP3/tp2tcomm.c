@@ -9,10 +9,14 @@
 #define M_SIZE (MAT_SIZE + 2)
 #define TIME_RESOLUTION 1000000
 
+
+int max(int num1, int num2)
+    return (num1 > num2) ? num1 : num2;
+
 int main(int argc, char *argv[]){
     struct timeval time;
     gettimeofday(&time, NULL);
-    long long unsigned end_r0, start_time, end_time, start_r0, start_rx, end_rx, tcomm1, tcomm2;
+    long long unsigned end_r0, start_time, end_time, start_r0, start_rx, end_rx, tcomm1, tcomp1;
 
 
     
@@ -95,6 +99,9 @@ int main(int argc, char *argv[]){
         for (int j = 1; j < M_SIZE - 1; j++){
             G2[i_division - 1][j] = (G1[i_division - 2][j] + right_recv_buffer[j] + G1[i_division - 1][j - 1] + G1[i_division - 1][j + 1] + G1[i_division - 1][j]) / 5;
         }
+        gettimeofday(&time, NULL);
+        v_time = time.tv_sec * TIME_RESOLUTION + time.tv_usec;
+        tcomp1 = max(tcomp1, v_time - t_time);
 
         //Guarantees the buffers have been sent
         if (it != 0){
