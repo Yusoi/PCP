@@ -1,0 +1,4 @@
+--------------------- MATRIX SIZE: 1024 ---------------------
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 1.317142 seconds

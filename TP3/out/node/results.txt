@@ -1,0 +1,93 @@
+--------------------- MATRIX SIZE: 1024 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 2.327518 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+2 total processes failed to start
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 0.600343 seconds
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 0.562253 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 1.138067 seconds
+--------------------- MATRIX SIZE: 2048 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 9.060414 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 4.703309 seconds
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+4 total processes failed to start
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 1.725196 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+16 total processes failed to start
+--------------------- MATRIX SIZE: 4096 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 35.573982 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 18.495520 seconds
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+4 total processes failed to start
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 7.253851 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+16 total processes failed to start

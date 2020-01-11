@@ -1,0 +1,57 @@
+--------------------- MATRIX SIZE: 1024 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 2.399208 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 1.126304 seconds
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 0.550622 seconds
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 0.279708 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 0.216447 seconds
+--------------------- MATRIX SIZE: 2048 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 9.471804 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 5.487000 seconds
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 3.746359 seconds
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 1.904570 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2.o tp2.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2.o
+Node: compute-641-19
+
+while attempting to start process rank 16.
+--------------------------------------------------------------------------
+16 total processes failed to start
+--------------------- MATRIX SIZE: 4096 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 37.118872 seconds
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 22.833784 seconds
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 14.248305 seconds
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 9.536737 seconds
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
+Total time: 5.209060 seconds

@@ -4,8 +4,15 @@
 #include <mpi.h>
 
 #define N_MAX 1000
+
+#ifndef N_MACHINES
 #define N_MACHINES 4
+#endif
+
+#ifndef MAT_SIZE
 #define MAT_SIZE 1024
+#endif
+
 #define M_SIZE (MAT_SIZE + 2)
 
 int main(int argc, char *argv[])
@@ -138,8 +145,6 @@ int main(int argc, char *argv[])
     //int MPI_Gather(void* sendbuf, int sendcount, MPI_Datatype sendtype, void* recvbuf, int recvcount, MPI_Datatype recvtype, int root, MPI_Comm comm)
     MPI_Gather(final_send_buffer, MACH_MAT_SIZE, MPI_INT, final_result_buffer, MACH_MAT_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
 
-    double end_time = MPI_Wtime();
-
     if (rank == 0)
     {
         //Creates the final matrix to output the result
@@ -164,6 +169,8 @@ int main(int argc, char *argv[])
                 FINAL_MAT[i + 1][j] = final_result_buffer[i * M_SIZE + j];
             }
         }
+
+        double end_time = MPI_Wtime();
 
         printf("Total time: %lf seconds\n", end_time - start_time);
 
