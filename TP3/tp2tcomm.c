@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/time.h>
 #include <mpi.h>
 
 #define N_MAX 1000
@@ -10,16 +11,17 @@
 #define TIME_RESOLUTION 1000000
 
 
-int max(int num1, int num2)
+int max(int num1, int num2){
     return (num1 > num2) ? num1 : num2;
+}
 
 int main(int argc, char *argv[]){
     struct timeval time;
     gettimeofday(&time, NULL);
-    long long unsigned end_r0, start_time, end_time, start_r0, start_rx, end_rx, tcomm1, tcomp1;
+    long long unsigned start_time, end_time, start_rx, end_rx, tcomm1, tcomp1, u_time, t_time, v_time;
+    tcomm1 = 0;
 
 
-    
     FILE *file = fopen("result.txt", "w+");
 
     int rank;
@@ -178,6 +180,7 @@ int main(int argc, char *argv[]){
 
         printf("Total time: %lld us\n", end_time - start_time);
         printf("Comm time: %lld us\n", tcomm1);
+        printf("Comp time: %lld us\n", end_rx-start_rx);
 
         //Prints results to a file
         for (int i = 0; i < M_SIZE; i++){
