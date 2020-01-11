@@ -1,4 +1,0 @@
---------------------- MATRIX SIZE: 4096 ---------------------
-Node Number: 4
-mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2.o tp2.c
-Total time: 23.095647 seconds

@@ -4,9 +4,14 @@
 #include <sys/time.h>
 #include <mpi.h>
 
+#ifndef N_MAX
 #define N_MAX 1000
-#define N_MACHINES 4
+#endif
+
+#ifndef MAT_SIZE
 #define MAT_SIZE 1024
+#endif
+
 #define M_SIZE (MAT_SIZE + 2)
 #define TIME_RESOLUTION 1000000
 

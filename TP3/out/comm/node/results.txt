@@ -1,0 +1,106 @@
+--------------------- MATRIX SIZE: 1024 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 1444234 us
+Comm time: 2517 us
+Comp time: 1154 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 749387 us
+Comm time: 1132 us
+Comp time: 567 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 417244 us
+Comm time: 783 us
+Comp time: 285 us
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 558815 us
+Comm time: 1124 us
+Comp time: 116 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 1361042 us
+Comm time: 1786 us
+Comp time: 61 us
+--------------------- MATRIX SIZE: 2048 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 4735097 us
+Comm time: 6789 us
+Comp time: 3683 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 2985417 us
+Comm time: 3871 us
+Comp time: 2317 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2tcomm.o
+Node: compute-641-12
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+4 total processes failed to start
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 1145840 us
+Comm time: 1287 us
+Comp time: 503 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2tcomm.o
+Node: compute-641-12
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+16 total processes failed to start
+--------------------- MATRIX SIZE: 4096 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 25478043 us
+Comm time: 53023 us
+Comp time: 18621 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 13436368 us
+Comm time: 26099 us
+Comp time: 9298 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2tcomm.o
+Node: compute-641-12
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+4 total processes failed to start
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 6090490 us
+Comm time: 7462 us
+Comp time: 2594 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2tcomm.o
+Node: compute-641-12
+
+while attempting to start process rank 1.
+--------------------------------------------------------------------------
+16 total processes failed to start

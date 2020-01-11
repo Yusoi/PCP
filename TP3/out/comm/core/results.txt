@@ -1,0 +1,85 @@
+--------------------- MATRIX SIZE: 1024 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 1230729 us
+Comm time: 1808 us
+Comp time: 896 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 692531 us
+Comm time: 753 us
+Comp time: 495 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 343721 us
+Comm time: 550 us
+Comp time: 242 us
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 184734 us
+Comm time: 196 us
+Comp time: 120 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=1024 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 248652 us
+Comm time: 140 us
+Comp time: 58 us
+--------------------- MATRIX SIZE: 2048 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 5506449 us
+Comm time: 6745 us
+Comp time: 3757 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 3580467 us
+Comm time: 4844 us
+Comp time: 2100 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 2768403 us
+Comm time: 3204 us
+Comp time: 1350 us
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 708263 us
+Comm time: 819 us
+Comp time: 497 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: bin/tp2tcomm.o
+Node: compute-641-12
+
+while attempting to start process rank 16.
+--------------------------------------------------------------------------
+16 total processes failed to start
+--------------------- MATRIX SIZE: 4096 ---------------------
+Node Number: 2
+mpicc -Wall -DN_MACHINES=2 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 26066450 us
+Comm time: 28822 us
+Comp time: 18476 us
+Node Number: 4
+mpicc -Wall -DN_MACHINES=4 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 14001814 us
+Comm time: 17700 us
+Comp time: 7922 us
+Node Number: 8
+mpicc -Wall -DN_MACHINES=8 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 12457285 us
+Comm time: 27423 us
+Comp time: 6419 us
+Node Number: 16
+mpicc -Wall -DN_MACHINES=16 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 7457287 us
+Comm time: 24502 us
+Comp time: 2985 us
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=4096 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 3129831 us
+Comm time: 3075 us
+Comp time: 1360 us

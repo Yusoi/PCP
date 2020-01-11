@@ -1,0 +1,6 @@
+--------------------- MATRIX SIZE: 2048 ---------------------
+Node Number: 32
+mpicc -Wall -DN_MACHINES=32 -DMAT_SIZE=2048 -std=c11 -O3 -o bin/tp2tcomm.o tp2tcomm.c
+Total time: 452065 us
+Comm time: 750 us
+Comp time: 244 us
